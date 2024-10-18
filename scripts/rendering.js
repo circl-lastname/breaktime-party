@@ -30,20 +30,21 @@ rendering.initializeCanvas = function () {
   this.canvasHeight = this.canvas.height / this.scale;
   
   this.ctx.scale(this.scale, this.scale);
+  this.ctx.translate(this.originX, this.originY);
   this.ctx.font = "40px Grandstander, sans-serif";
   this.ctx.textBaseline = "top";
   
   this.ctx.fillStyle = "#202020";
-  this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
+  this.ctx.fillRect(-this.originX, -this.originY, this.canvasWidth, this.canvasHeight);
   
   this.ctx.fillStyle = "#ffffff";
-  this.ctx.fillRect(this.originX, this.originY, 1280, 720);
+  this.ctx.fillRect(0, 0, 1280, 720);
   
   this.ctx.fillStyle = "#ff0000";
-  this.ctx.fillRect(this.originX+32, this.originY+32, 32, 32);
+  this.ctx.fillRect(32, 32, 32, 32);
   
   this.ctx.fillStyle = "#000000";
-  this.ctx.fillText("Hello, World!", this.originX+64, this.originY+32);
+  this.ctx.fillText("Hello, World!", 64, 32);
 };
 
 window.addEventListener("resize", () => {
