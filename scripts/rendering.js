@@ -34,17 +34,18 @@ rendering.initializeCanvas = function () {
   this.ctx.font = "40px Grandstander, sans-serif";
   this.ctx.textBaseline = "top";
   
-  this.ctx.fillStyle = "#202020";
-  this.ctx.fillRect(-this.originX, -this.originY, this.canvasWidth, this.canvasHeight);
-  
   this.ctx.fillStyle = "#ffffff";
-  this.ctx.fillRect(0, 0, 1280, 720);
+  this.fillBackground();
   
   this.ctx.fillStyle = "#ff0000";
   this.ctx.fillRect(32, 32, 32, 32);
   
   this.ctx.fillStyle = "#000000";
   this.ctx.fillText("Hello, World!", 64, 32);
+};
+
+rendering.fillBackground = function () {
+  this.ctx.fillRect(-this.originX, -this.originY, this.canvasWidth, this.canvasHeight);
 };
 
 window.addEventListener("resize", () => {
