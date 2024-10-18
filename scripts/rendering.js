@@ -39,6 +39,10 @@ rendering.initializeCanvas = function () {
   
   this.ctx.fillStyle = "#ff0000";
   this.ctx.fillRect(this.originX+1, this.originY+1, 1, 1);
+  
+  this.ctx.fillStyle = "#000000";
+  this.ctx.font = "1px Grandstander, sans-serif";
+  this.ctx.fillText("Hello, World!", this.originX+3, this.originY+3);
 };
 
 window.addEventListener("resize", () => {
