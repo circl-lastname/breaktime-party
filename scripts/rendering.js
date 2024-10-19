@@ -2,11 +2,15 @@ const rendering = {};
 
 rendering.canvas = document.getElementById("canvas");
 rendering.ctx = rendering.canvas.getContext("2d");
+
 rendering.scale = undefined;
 rendering.originX = undefined;
 rendering.originY = undefined;
 rendering.canvasWidth = undefined;
 rendering.canvasHeight = undefined;
+
+rendering.renderScheduled = false;
+rendering.layoutScheduled = false;
 
 rendering.initializeCanvas = function () {
   this.canvas.width = window.innerWidth;
@@ -33,11 +37,37 @@ rendering.initializeCanvas = function () {
   this.ctx.translate(this.originX, this.originY);
   this.ctx.font = "32px Grandstander, sans-serif";
   this.ctx.textBaseline = "top";
+  
+  this.scheduleLayout();
+  this.scheduleRender();
 };
 
 rendering.fillBackground = function () {
   this.ctx.fillRect(-this.originX, -this.originY, this.canvasWidth, this.canvasHeight);
 };
+
+rendering.scheduleRender = function () {
+  if (!this.renderScheduled) {
+    this.renderScheduled = true;
+    
+    requestAnimationFrame(() => {
+      this.renderScheduled = false;
+      
+      if (this.layoutScheduled) {
+        this.layoutScheduled = false;
+        states[state].layout();
+      }
+      
+      states[state].render();
+    });
+  }
+};
+
+rendering.scheduleLayout = function () {
+  if (!this.layoutScheduled) {
+    this.layoutScheduled = false;
+  }
+}
 
 window.addEventListener("resize", () => {
   rendering.initializeCanvas();
