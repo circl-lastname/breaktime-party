@@ -1,7 +1,7 @@
 const rendering = {};
 
 rendering.canvas = document.getElementById("canvas");
-rendering.ctx = canvas.getContext("2d");
+rendering.ctx = rendering.canvas.getContext("2d");
 rendering.scale = undefined;
 rendering.originX = undefined;
 rendering.originY = undefined;
