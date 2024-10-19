@@ -13,8 +13,11 @@ rendering.renderScheduled = false;
 rendering.layoutScheduled = false;
 
 rendering.initializeCanvas = function () {
-  this.canvas.width = window.innerWidth;
-  this.canvas.height = window.innerHeight;
+  this.canvas.style.width = `${window.innerWidth}px`;
+  this.canvas.style.height = `${window.innerHeight}px`;
+  
+  this.canvas.width = Math.ceil(window.innerWidth * window.devicePixelRatio);
+  this.canvas.height = Math.ceil(window.innerHeight * window.devicePixelRatio);
   
   let horizontalScale = this.canvas.width/1280;
   let optimalHeight = horizontalScale*720;
