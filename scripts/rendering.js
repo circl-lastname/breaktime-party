@@ -65,7 +65,7 @@ rendering.scheduleRender = function () {
 
 rendering.scheduleLayout = function () {
   if (!this.layoutScheduled) {
-    this.layoutScheduled = false;
+    this.layoutScheduled = true;
   }
 }
 
