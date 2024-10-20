@@ -1,6 +1,7 @@
 var playerData = {};
 var state = "loadingScreen";
 var stateData = {};
+var playerStateData = {};
 var localStateData = {};
 
 async function main() {
@@ -9,6 +10,56 @@ async function main() {
   await font.load();
   
   rendering.init();
+}
+
+function doUpdate(packet) {
+  if (packet.state) {
+    if (states[state].leave) {
+      states[state].leave();
+    }
+    
+    state = packet.state;
+    stateData = {};
+    playerStateData = {};
+    localStateData = {};
+    
+    if (states[state].enter) {
+      states[state].enter();
+    }
+  }
+  
+  if (packet.playerData) {
+    for (key in packet.playerData) {
+      let oldValue = playerData[key];
+      playerData[key] = packet.playerData[key];
+      
+      if (states[state].playerDataHooks && states[state].playerDataHooks[key]) {
+        states[state].playerDataHooks[key](oldValue);
+      }
+    }
+  }
+  
+  if (packet.stateData) {
+    for (key in packet.stateData) {
+      let oldValue = stateData[key];
+      stateData[key] = packet.stateData[key];
+      
+      if (states[state].stateDataHooks && states[state].stateDataHooks[key]) {
+        states[state].stateDataHooks[key](oldValue);
+      }
+    }
+  }
+  
+  if (packet.playerStateData) {
+    for (key in packet.playerStateData) {
+      let oldValue = playerStateData[key];
+      playerStateData[key] = packet.playerStateData[key];
+      
+      if (states[state].playerStateHooks && states[state].playerStateHooks[key]) {
+        states[state].playerStateHooks[key](oldValue);
+      }
+    }
+  }
 }
 
 main();
