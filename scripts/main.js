@@ -13,6 +13,8 @@ async function main() {
 }
 
 function doUpdate(packet) {
+  let init = false;
+  
   if (packet.state) {
     if (states[state].leave) {
       states[state].leave();
@@ -26,6 +28,8 @@ function doUpdate(packet) {
     if (states[state].enter) {
       states[state].enter();
     }
+    
+    init = true;
   }
   
   if (packet.playerData) {
@@ -34,7 +38,7 @@ function doUpdate(packet) {
       playerData[key] = packet.playerData[key];
       
       if (states[state].playerDataHooks && states[state].playerDataHooks[key]) {
-        states[state].playerDataHooks[key](oldValue);
+        states[state].playerDataHooks[key](oldValue, init);
       }
     }
   }
@@ -45,7 +49,7 @@ function doUpdate(packet) {
       stateData[key] = packet.stateData[key];
       
       if (states[state].stateDataHooks && states[state].stateDataHooks[key]) {
-        states[state].stateDataHooks[key](oldValue);
+        states[state].stateDataHooks[key](oldValue, init);
       }
     }
   }
@@ -56,7 +60,7 @@ function doUpdate(packet) {
       playerStateData[key] = packet.playerStateData[key];
       
       if (states[state].playerStateHooks && states[state].playerStateHooks[key]) {
-        states[state].playerStateHooks[key](oldValue);
+        states[state].playerStateHooks[key](oldValue, init);
       }
     }
   }
