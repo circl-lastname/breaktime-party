@@ -29,6 +29,9 @@ function doUpdate(packet) {
       states[state].enter();
     }
     
+    rendering.scheduleLayout();
+    rendering.scheduleRender();
+    
     init = true;
   }
   
