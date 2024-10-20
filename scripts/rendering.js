@@ -12,6 +12,14 @@ rendering.canvasHeight = undefined;
 rendering.renderScheduled = false;
 rendering.layoutScheduled = false;
 
+rendering.init = function () {
+  window.addEventListener("resize", () => {
+    rendering.initializeCanvas();
+  });
+  
+  this.initializeCanvas();
+}
+
 rendering.initializeCanvas = function () {
   this.canvas.style.width = `${window.innerWidth}px`;
   this.canvas.style.height = `${window.innerHeight}px`;
@@ -71,9 +79,3 @@ rendering.scheduleLayout = function () {
     this.layoutScheduled = true;
   }
 }
-
-window.addEventListener("resize", () => {
-  rendering.initializeCanvas();
-});
-
-rendering.initializeCanvas();
