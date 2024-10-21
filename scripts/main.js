@@ -10,6 +10,9 @@ async function main() {
   await font.load();
   
   rendering.init();
+  assets.load(() => {
+    console.log("Loaded assets");
+  });
 }
 
 function doUpdate(packet) {
