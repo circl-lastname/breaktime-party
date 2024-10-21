@@ -36,7 +36,7 @@ function doUpdate(packet) {
   }
   
   if (packet.playerData) {
-    for (key in packet.playerData) {
+    for (let key in packet.playerData) {
       let oldValue = playerData[key];
       playerData[key] = packet.playerData[key];
       
@@ -47,7 +47,7 @@ function doUpdate(packet) {
   }
   
   if (packet.stateData) {
-    for (key in packet.stateData) {
+    for (let key in packet.stateData) {
       let oldValue = stateData[key];
       stateData[key] = packet.stateData[key];
       
@@ -58,7 +58,7 @@ function doUpdate(packet) {
   }
   
   if (packet.playerStateData) {
-    for (key in packet.playerStateData) {
+    for (let key in packet.playerStateData) {
       let oldValue = playerStateData[key];
       playerStateData[key] = packet.playerStateData[key];
       
