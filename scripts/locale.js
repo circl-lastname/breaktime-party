@@ -1,3 +1,13 @@
+const langs = {};
+
+langs.english = {
+  loading: "Loading..."
+}
+
+langs.polish = {
+  loading: "Ładowanie..."
+}
+
 var locale = {};
 
 if (navigator.language == "pl") {

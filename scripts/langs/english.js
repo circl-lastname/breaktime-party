@@ -1,3 +1,0 @@
-langs.english = {
-  loading: "Loading..."
-}

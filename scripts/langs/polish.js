@@ -1,3 +1,0 @@
-langs.polish = {
-  loading: "Ładowanie..."
-}
