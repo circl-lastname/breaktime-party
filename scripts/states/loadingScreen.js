@@ -1,7 +1,7 @@
 states.loadingScreen = {};
 
 states.loadingScreen.layout = function () {
-  let metrics = rendering.ctx.measureText(lang.loading);
+  let metrics = rendering.ctx.measureText(locale.loading);
   localStateData.textX = 1280/2 - metrics.width/2;
   localStateData.textY = 720/2 - metrics.actualBoundingBoxDescent/2;
 };
@@ -11,5 +11,5 @@ states.loadingScreen.render = function () {
   rendering.fillBackground();
   
   rendering.ctx.fillStyle = "#ffffff";
-  rendering.ctx.fillText(lang.loading, localStateData.textX, localStateData.textY);
+  rendering.ctx.fillText(locale.loading, localStateData.textX, localStateData.textY);
 };
