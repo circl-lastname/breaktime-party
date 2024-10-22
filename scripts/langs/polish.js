@@ -1,0 +1,3 @@
+langs.polish = {
+  loading: "Ładowanie..."
+}

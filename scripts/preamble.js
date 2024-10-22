@@ -1,1 +1,2 @@
+const langs = {};
 const states = {};

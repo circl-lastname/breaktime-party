@@ -1,0 +1,3 @@
+langs.english = {
+  loading: "Loading..."
+}
