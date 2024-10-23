@@ -18,7 +18,7 @@ rendering.init = function () {
   });
   
   this.initializeCanvas();
-}
+};
 
 rendering.initializeCanvas = function () {
   this.canvas.style.width = `${window.innerWidth}px`;
@@ -78,4 +78,4 @@ rendering.scheduleLayout = function () {
   if (!this.layoutScheduled) {
     this.layoutScheduled = true;
   }
-}
+};
