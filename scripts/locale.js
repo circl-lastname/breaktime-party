@@ -10,7 +10,7 @@ langs.polish = {
 
 var locale = {};
 
-if (navigator.language == "pl") {
+if (navigator.language.startsWith("pl")) {
   locale = langs.polish;
 } else {
   locale = langs.english;
