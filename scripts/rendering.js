@@ -10,17 +10,17 @@ rendering.canvasWidth = undefined;
 rendering.canvasHeight = undefined;
 
 rendering.renderScheduled = false;
-rendering.layoutScheduled = false;
 
 rendering.init = function () {
   window.addEventListener("resize", () => {
-    rendering.initializeCanvas();
+    rendering.initCanvas();
+    rendering.scheduleRender();
   });
   
-  this.initializeCanvas();
+  this.initCanvas();
 };
 
-rendering.initializeCanvas = function () {
+rendering.initCanvas = function () {
   this.canvas.style.width = `${window.innerWidth}px`;
   this.canvas.style.height = `${window.innerHeight}px`;
   
@@ -48,9 +48,6 @@ rendering.initializeCanvas = function () {
   this.ctx.translate(this.originX, this.originY);
   this.ctx.font = "75px Grandstander, sans-serif";
   this.ctx.textBaseline = "top";
-  
-  this.scheduleLayout();
-  this.scheduleRender();
 };
 
 rendering.fillBackground = function () {
@@ -63,19 +60,7 @@ rendering.scheduleRender = function () {
     
     requestAnimationFrame(() => {
       this.renderScheduled = false;
-      
-      if (this.layoutScheduled) {
-        this.layoutScheduled = false;
-        states[state].layout();
-      }
-      
       states[state].render();
     });
-  }
-};
-
-rendering.scheduleLayout = function () {
-  if (!this.layoutScheduled) {
-    this.layoutScheduled = true;
   }
 };

@@ -1,6 +1,6 @@
 states.loadingScreen = {};
 
-states.loadingScreen.layout = function () {
+states.loadingScreen.enter = function () {
   let metrics = rendering.ctx.measureText(locale.loading);
   localStateData.textX = 1280/2 - metrics.width/2;
   localStateData.textY = 720/2 - metrics.actualBoundingBoxDescent/2;

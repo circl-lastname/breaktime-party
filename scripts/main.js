@@ -10,6 +10,9 @@ async function main() {
   await font.load();
   
   rendering.init();
+  states[state].enter();
+  rendering.scheduleRender();
+  
   assets.load(() => {
     console.log("Loaded assets");
   });
@@ -32,7 +35,6 @@ function doUpdate(packet) {
       states[state].enter();
     }
     
-    rendering.scheduleLayout();
     rendering.scheduleRender();
     
     init = true;
