@@ -67,8 +67,8 @@ function doUpdate(packet) {
       let oldValue = playerStateData[key];
       playerStateData[key] = packet.playerStateData[key];
       
-      if (states[state].playerStateHooks && states[state].playerStateHooks[key]) {
-        states[state].playerStateHooks[key](oldValue, init);
+      if (states[state].playerStateDataHooks && states[state].playerStateDataHooks[key]) {
+        states[state].playerStateDataHooks[key](oldValue, init);
       }
     }
   }
